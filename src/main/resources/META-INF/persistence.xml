@@ -4,7 +4,7 @@
     <persistence-unit name="banquePU">
         <jta-data-source>java:app/jdbc/banque</jta-data-source>
         <properties>
-            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
             <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
     </persistence-unit>

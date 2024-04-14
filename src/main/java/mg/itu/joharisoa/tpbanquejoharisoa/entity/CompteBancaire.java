@@ -18,7 +18,9 @@ import java.io.Serializable;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c")})
+    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c"),
+    @NamedQuery(name = "CompteBancaire.count", query = "SELECT count(c) from CompteBancaire c")
+})
 public class CompteBancaire implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,8 +32,7 @@ public class CompteBancaire implements Serializable {
 
     public CompteBancaire() {
     }
-    
-   
+
     public CompteBancaire(String nom, int solde) {
         this.nom = nom;
         this.solde = solde;

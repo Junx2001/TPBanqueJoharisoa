@@ -1,9 +1,9 @@
 package mg.itu.joharisoa.tpbanquejoharisoa.service;
 
 import jakarta.annotation.sql.DataSourceDefinition;
+import jakarta.enterprise.context.ApplicationScoped;
 import mg.itu.joharisoa.tpbanquejoharisoa.entity.CompteBancaire;
 import java.util.List;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -12,7 +12,7 @@ import jakarta.transaction.Transactional;
 /**
  * Gère la persistance des Comptes Bancaire.
  */
-@RequestScoped
+@ApplicationScoped
 @DataSourceDefinition (
     className="com.mysql.cj.jdbc.MysqlDataSource",
     name="java:app/jdbc/banque",
@@ -45,5 +45,10 @@ public class GestionnaireCompte {
     @Transactional
     public void creerCompte(CompteBancaire c) {
        em.persist(c);
+    }
+    
+     public long nbComptes() {
+       Query query = em.createNamedQuery("CompteBancaire.count");
+       return (long)query.getSingleResult();
     }
 }
