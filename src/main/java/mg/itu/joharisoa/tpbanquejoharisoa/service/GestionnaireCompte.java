@@ -29,7 +29,7 @@ import jakarta.transaction.Transactional;
 )
 public class GestionnaireCompte {
 
-    @PersistenceContext(unitName = "compteBancairePU")
+    @PersistenceContext(unitName = "banquePU")
     private EntityManager em;
 
     public List<CompteBancaire> getAllComptesBancaire() {
