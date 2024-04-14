@@ -32,7 +32,7 @@ public class GestionnaireCompte {
     @PersistenceContext(unitName = "banquePU")
     private EntityManager em;
 
-    public List<CompteBancaire> getAllComptesBancaire() {
+    public List<CompteBancaire> getAllComptes() {
        Query query = em.createNamedQuery("CompteBancaire.findAll");
        return query.getResultList();
     }
@@ -43,7 +43,7 @@ public class GestionnaireCompte {
     }
 
     @Transactional
-    public void persist(CompteBancaire compte) {
-       em.persist(compte);
+    public void creerCompte(CompteBancaire c) {
+       em.persist(c);
     }
 }
