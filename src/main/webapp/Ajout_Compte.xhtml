@@ -19,14 +19,14 @@
                         <h:inputText id="nom" size="3" value="#{ajoutCompte.nom}"
                                      required="true"/>
                         <h:message for="nom"/>
-   
+                    </h:panelGrid>
+                     <h:panelGrid columns="3">
                         Solde du Compte : 
                         <h:inputText id="solde" size="3" value="#{ajoutCompte.solde}" converterMessage="Le solde est un nombre entier"
                                      required="true"/>
                         <h:message for="solde"/>
-                        
-                       <h:messages/>
                     </h:panelGrid>
+                      <h:messages/>
 
                     <h:commandButton value="Soumettre" action="#{ajoutCompte.ajouter_compte()}"/>
                 </h:form>

@@ -9,7 +9,7 @@
 
         <ui:composition template="./WEB-INF/templates/template_default.xhtml">
 
-             <ui:define name="metadata">
+            <ui:define name="metadata">
                 <f:metadata>  
                     <f:viewParam name="id" value="#{modifier.id}"  
                                  required="true"/>  
@@ -22,7 +22,7 @@
             </ui:define>
 
             <ui:define name="content">
-                 <h:form id="form">
+                <h:form id="form">
                     <h:panelGrid columns="3">
                         Nom du Compte à Modifier : 
                         <h:inputText id="nom" value="#{modifier.compte.nom}"
@@ -32,7 +32,8 @@
 
                     <h:commandButton id="modifier" value="Modifier" action="#{modifier.modifierNom()}"/>
                 </h:form>
-                <h:messages/>
+                <h:messages infoStyle="color: green;" errorStyle="color:red;"/>
+
             </ui:define>
 
         </ui:composition>

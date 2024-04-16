@@ -39,7 +39,9 @@
                             <f:selectItem itemValue="retrait" itemLabel="Retrait"/>
                         </h:selectOneRadio>
                         <h:message for="typeMouvement"/>
+                    </h:panelGrid>
 
+                    <h:panelGrid columns="3">
                         Montant du mouvement :
                         <h:inputText id="montant" value="#{mouvement.montant}"
                                      required="true"

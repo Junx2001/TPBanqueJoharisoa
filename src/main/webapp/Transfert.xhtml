@@ -20,12 +20,18 @@
                                      required="true"
                                      converterMessage="L'id est un nombre entier"/>
                         <h:message for="source"/>
-   
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="3">
                         Id compte destination : 
                         <h:inputText id="destination" size="3" value="#{transfert.idDestination}"
                                      required="true"
                                      converterMessage="L'id est un nombre entier"/>
                         <h:message for="destination"/>
+
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="3">
                         Montant : 
                         <h:inputText id="montant" size="3" value="#{transfert.montant}"
                                      required="true"
