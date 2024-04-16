@@ -51,6 +51,12 @@
                             <h:outputText value="#{item.solde}"/>
                         </p:column>
 
+                        <p:column>
+                            <h:commandLink action="#{listeComptes.supprimerCompte(item)}" title="Supprimer le compte">
+                                <h:graphicImage name="images/del.png" />
+                            </h:commandLink>
+                        </p:column>
+
                     </p:dataTable>
                 </h:form>
                 <h:messages/>
