@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/template_default.xhtml">
+
+             <ui:define name="metadata">
+                <f:metadata>  
+                    <f:viewParam name="id" value="#{modifier.id}"  
+                                 required="true"/>  
+                    <f:viewAction action="#{modifier.loadCompte}"/>  
+                </f:metadata>
+            </ui:define>
+
+            <ui:define name="top">
+                Modification Nom du Compte #{modifier.id}
+            </ui:define>
+
+            <ui:define name="content">
+                 <h:form id="form">
+                    <h:panelGrid columns="3">
+                        Nom du Compte à Modifier : 
+                        <h:inputText id="nom" value="#{modifier.compte.nom}"
+                                     required="true"/>
+                        <h:message for="nom"/>
+                    </h:panelGrid>
+
+                    <h:commandButton id="modifier" value="Modifier" action="#{modifier.modifierNom()}"/>
+                </h:form>
+                <h:messages/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
