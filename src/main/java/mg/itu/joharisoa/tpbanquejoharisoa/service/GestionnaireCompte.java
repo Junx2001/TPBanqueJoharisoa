@@ -36,8 +36,8 @@ public class GestionnaireCompte {
         Query query = em.createNamedQuery("CompteBancaire.findAll");
         return query.getResultList();
     }
-    
-   public CompteBancaire findById(long idCompte) {
+
+    public CompteBancaire findById(long idCompte) {
         return em.find(CompteBancaire.class, idCompte);
     }
 
@@ -63,5 +63,29 @@ public class GestionnaireCompte {
     public long nbComptes() {
         Query query = em.createNamedQuery("CompteBancaire.count");
         return (long) query.getSingleResult();
+    }
+
+    /**
+     * Dépôt d'argent sur un compte bancaire.
+     *
+     * @param compteBancaire
+     * @param montant
+     */
+    @Transactional
+    public void deposer(CompteBancaire compteBancaire, int montant) {
+        compteBancaire.deposer(montant);
+        update(compteBancaire);
+    }
+
+    /**
+     * Retrait d'argent sur un compte bancaire.
+     *
+     * @param compteBancaire
+     * @param montant
+     */
+    @Transactional
+    public void retirer(CompteBancaire compteBancaire, int montant) {
+        compteBancaire.retirer(montant);
+        update(compteBancaire);
     }
 }

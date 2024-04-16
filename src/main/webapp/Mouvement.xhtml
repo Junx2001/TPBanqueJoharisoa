@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/template_default.xhtml">
+
+            <ui:define name="metadata">
+                <f:metadata>  
+                    <f:viewParam name="id" value="#{mouvement.id}"  
+                                 required="true"/>  
+                    <f:viewAction action="#{mouvement.loadCompte}"/>  
+                </f:metadata>
+            </ui:define>
+
+            <ui:define name="top">
+                Mouvement sur un compte
+            </ui:define>
+
+            <ui:define name="content">
+                <h1>Mouvement sur le compte numéro #{mouvement.id}
+                    de #{mouvement.compte.nom}</h1>
+
+                <h:form>
+                    <h:panelGrid columns="3">
+                        Nom du titulaire :
+                        <h:outputText value="#{mouvement.compte.nom}"/>
+                        <h:panelGroup/>
+                        Type du mouvement :
+                        <h:selectOneRadio id="typeMouvement"
+                                          value="#{mouvement.typeMouvement}"
+                                          required="true"
+                                          layout="pageDirection">
+                            <f:selectItem itemValue="ajout" itemLabel="Ajout"/>
+                            <f:selectItem itemValue="retrait" itemLabel="Retrait"/>
+                        </h:selectOneRadio>
+                        <h:message for="typeMouvement"/>
+
+                        Montant du mouvement :
+                        <h:inputText id="montant" value="#{mouvement.montant}"
+                                     required="true"
+                                     validator="#{mouvement.validateSolde}"/>
+                        <h:message for="montant"/>
+                    </h:panelGrid>
+                    <h:commandButton action="#{mouvement.enregistrerMouvement()}"
+                                     value="Enregistrer le mouvement"/>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
