@@ -5,7 +5,7 @@
 package mg.itu.joharisoa.tpbanquejoharisoa.jsf;
 
 import jakarta.inject.Named;
-import jakarta.faces.view.ViewScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import java.io.Serializable;
 import mg.itu.joharisoa.tpbanquejoharisoa.entity.CompteBancaire;
@@ -13,7 +13,7 @@ import mg.itu.joharisoa.tpbanquejoharisoa.jsf.util.Util;
 import mg.itu.joharisoa.tpbanquejoharisoa.service.GestionnaireCompte;
 
 @Named(value = "transfert")
-@ViewScoped
+@RequestScoped
 public class TransfertCompte implements Serializable {
 
     private long idSource;
