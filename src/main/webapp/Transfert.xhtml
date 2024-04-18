@@ -19,7 +19,7 @@
                         <h:inputText id="source" size="3" value="#{transfert.idSource}"
                                      required="true"
                                      converterMessage="L'id est un nombre entier"/>
-                        <h:message for="source"/>
+                        <h:message for="source" infoStyle="color: green;" errorStyle="color:red;"/>
                     </h:panelGrid>
 
                     <h:panelGrid columns="3">
@@ -27,7 +27,7 @@
                         <h:inputText id="destination" size="3" value="#{transfert.idDestination}"
                                      required="true"
                                      converterMessage="L'id est un nombre entier"/>
-                        <h:message for="destination"/>
+                        <h:message for="destination" infoStyle="color: green;" errorStyle="color:red;"/>
 
                     </h:panelGrid>
 
@@ -36,12 +36,12 @@
                         <h:inputText id="montant" size="3" value="#{transfert.montant}"
                                      required="true"
                                      converterMessage="Le montant est un nombre entier"/>
-                        <h:message for="montant"/>
+                        <h:message for="montant" infoStyle="color: green;" errorStyle="color:red;"/>
                     </h:panelGrid>
 
                     <h:commandButton id="valider" value="Valider" action="#{transfert.transferer_argent()}"/>
                 </h:form>
-                <h:messages/>
+                <h:messages infoStyle="color: green;" errorStyle="color:red;"/>
             </ui:define>
 
         </ui:composition>

@@ -9,28 +9,29 @@
         <ui:composition template="./WEB-INF/templates/template_default.xhtml">
 
             <ui:define name="top">
-                 Ajout d'un nouveau compte bancaire
+                Ajout d'un nouveau compte bancaire
             </ui:define>
 
             <ui:define name="content">
-                 <h:form id="form">
+                <h:form id="form">
                     <h:panelGrid columns="3">
                         Nom du Compte : 
                         <h:inputText id="nom" size="3" value="#{ajoutCompte.nom}"
                                      required="true"/>
-                        <h:message for="nom"/>
+                        <h:message infoStyle="color: green;" errorStyle="color:red;" for="nom"/>
                     </h:panelGrid>
-                     <h:panelGrid columns="3">
+                    <h:panelGrid columns="3">
                         Solde du Compte : 
                         <h:inputText id="solde" size="3" value="#{ajoutCompte.solde}" converterMessage="Le solde est un nombre entier"
                                      required="true"/>
-                        <h:message for="solde"/>
+                        <h:message infoStyle="color: green;" errorStyle="color:red;" for="solde"/>
                     </h:panelGrid>
-                      <h:messages/>
+                    <h:messages infoStyle="color: green;" errorStyle="color:red;"/>
+
 
                     <h:commandButton value="Soumettre" action="#{ajoutCompte.ajouter_compte()}"/>
                 </h:form>
-               
+
             </ui:define>
 
         </ui:composition>

@@ -8,6 +8,7 @@ import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import java.io.Serializable;
+import java.util.Objects;
 import mg.itu.joharisoa.tpbanquejoharisoa.entity.CompteBancaire;
 import mg.itu.joharisoa.tpbanquejoharisoa.jsf.util.Util;
 import mg.itu.joharisoa.tpbanquejoharisoa.service.GestionnaireCompte;
@@ -57,6 +58,13 @@ public class TransfertCompte implements Serializable {
 
         boolean erreur = false;
         CompteBancaire source = gestionnaireCompte.findById(idSource);
+        if (idSource == idDestination) {
+            // Message d'erreur associé au composant destination ; form:destination est l'id client
+            // si l'id du formulaire est "form" et l'id du champ de saisie de l'id de la source est "destination"
+            // dans la page JSF qui lance le transfert.
+            Util.messageErreur("Transfert d'argent entre le même compte !");
+            erreur = true;
+        }
         if (source == null) {
             // Message d'erreur associé au composant source ; form:source est l'id client
             // si l'id du formulaire est "form" et l'id du champ de saisie de l'id de la source est "source"
@@ -76,14 +84,14 @@ public class TransfertCompte implements Serializable {
             // dans la page JSF qui lance le transfert.
             Util.messageErreur("Aucun compte avec cet id !", "Aucun compte avec cet id !", "form:destination");
             erreur = true;
-        } 
+        }
         if (erreur) { // en cas d'erreur, rester sur la même page
             return null;
         }
         gestionnaireCompte.transferer(source, destination, (int) montant);
         // Message de succès ; addFlash à cause de la redirection.
         // ...Complétez pour faire apparaitre le montant et les noms des 2 propriétaires des comptes.
-        Util.addFlashInfoMessage("Transfert correctement effectué de "+montant+" entre "+source.getNom()+" et "+destination.getNom());
+        Util.addFlashInfoMessage("Transfert correctement effectué de " + montant + " entre " + source.getNom() + " et " + destination.getNom());
         return "Liste_Comptes?faces-redirect=true";
     }
 

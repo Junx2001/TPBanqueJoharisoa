@@ -27,7 +27,7 @@
                         Nom du Compte à Modifier : 
                         <h:inputText id="nom" value="#{modifier.compte.nom}"
                                      required="true"/>
-                        <h:message for="nom"/>
+                        <h:message for="nom" infoStyle="color: green;" errorStyle="color:red;"/>
                     </h:panelGrid>
 
                     <h:commandButton id="modifier" value="Modifier" action="#{modifier.modifierNom()}"/>

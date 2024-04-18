@@ -38,7 +38,7 @@
                             <f:selectItem itemValue="ajout" itemLabel="Ajout"/>
                             <f:selectItem itemValue="retrait" itemLabel="Retrait"/>
                         </h:selectOneRadio>
-                        <h:message for="typeMouvement"/>
+                        <h:message for="typeMouvement" infoStyle="color: green;" errorStyle="color:red;"/>
                     </h:panelGrid>
 
                     <h:panelGrid columns="3">
@@ -46,7 +46,7 @@
                         <h:inputText id="montant" value="#{mouvement.montant}"
                                      required="true"
                                      validator="#{mouvement.validateSolde}"/>
-                        <h:message for="montant"/>
+                        <h:message for="montant" infoStyle="color: green;" errorStyle="color:red;"/>
                     </h:panelGrid>
                     <h:commandButton action="#{mouvement.enregistrerMouvement()}"
                                      value="Enregistrer le mouvement"/>
