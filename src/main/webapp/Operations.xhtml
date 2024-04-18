@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/template_default.xhtml">
+
+            <ui:define name="metadata">
+                <f:metadata>  
+                    <f:viewParam name="id" value="#{operations.idCompte}"  
+                                 required="true"/>  
+                    <f:viewAction action="#{operations.loadCompte}"/>  
+                </f:metadata>
+            </ui:define>
+
+            <ui:define name="content">
+                <p:dataTable value="#{operations.operations}" paginator="true" rows="10"
+                             emptyMessage="Aucun compte avec ce critère"
+                             var="item" widgetVar="compteTable" rowsPerPageTemplate="2,4,8,10"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Date Opération"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateOperation}">
+                            <f:convertDateTime type="localDateTime" pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Montant"/>
+                        </f:facet>
+                        <h:outputText value="#{item.montant}"/>
+                    </p:column>
+
+                </p:dataTable>
+                <h:messages infoStyle="color: green;" errorStyle="color:red;"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
