@@ -17,6 +17,10 @@
                     <f:viewAction action="#{operations.loadCompte}"/>  
                 </f:metadata>
             </ui:define>
+            
+            <ui:define name="top">
+                Liste des Opérations du compte de #{operations.compte.nom}
+            </ui:define>
 
             <ui:define name="content">
                 <p:dataTable value="#{operations.operations}" paginator="true" rows="10"
